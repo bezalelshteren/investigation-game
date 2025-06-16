@@ -6,41 +6,59 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    internal class inveestigation
+    public class inveestigation
     {
-        public inveestigation()
+        public List<sensor> kindOfsensors;
+        public Dictionary<sensor, int> sensorheNeed;
+        public Dictionary<sensor, int> ListOfSensor;
+        public Dictionary<sensor, int> theSensorsHeNeed;
+        public inveestigation(SimpleAgent simpleAgent)
         {
-            List<sensor> kindOfsensors = new List<sensor>();
-            Dictionary<sensor, int> sensorheNeed = new Dictionary<sensor, int>();
-            Dictionary<sensor, int> ListOfSensors = new Dictionary<sensor, int>();
+            kindOfsensors = new List<sensor>();
+            sensorheNeed = new Dictionary<sensor, int>();
+            ListOfSensor = new Dictionary<sensor, int>();
+            createRandom(kindOfsensors, simpleAgent);
+            ListOfSensor = changfromArreyToList(simpleAgent.arreyOfSensors);
+            sensorheNeed = changfromArreyToList(simpleAgent.SensorHeNeed);
         }
-        public  Dictionary<sensor,int> changfromArreyToList(sensor[] sensors,Dictionary<sensor,int> sensorheNeed)
+        public  Dictionary<sensor,int> changfromArreyToList(sensor[] sensors)
         {
             foreach(sensor s in sensors)
             {
-                if (sensorheNeed.ContainsKey(s))
+                if (ListOfSensor.ContainsKey(s))
                 {
-                    sensorheNeed[s] ++ ;
+                    ListOfSensor[s] ++ ;
                 }
-                else { sensorheNeed[s] = 1; }
-            }
-            return sensorheNeed;
-        }
-
-        public Dictionary<sensor, int> theSensorsHeNeed = changfromArreyToList(SimpleAgent.arreyOfSensors, this.ListOfSensors);
-
-        public s[] createRandom(string rank, sensor[] ListOfSensor, List<sensor> kindOfsensors)
-        {
-            
-            
-            Random random = new Random();
-
-            for(int i = 0;i < 2; i++)
-            {
-                int num = random.Next(kindOfsensors.Count);
-                ListOfSensor.Append(kindOfsensors[num]);
+                else { ListOfSensor[s] = 1; }
             }
             return ListOfSensor;
         }
+
+       
+
+        public sensor[] createRandom( List<sensor> kindOfsensors, Agent SimpleAgent)
+        {
+            Random random = new Random();
+
+            for(int i = 0;i < SimpleAgent.SensorSlots; i++)
+            {
+                int num = random.Next(kindOfsensors.Count);
+                SimpleAgent.arreyOfSensors.Append(kindOfsensors[num]);
+            }
+            return SimpleAgent.arreyOfSensors;
+        }
+
+        public Dictionary<sensor,bool> startAscing() 
+        {
+            Dictionary<sensor, bool> isCorect = new Dictionary<sensor, bool> ();
+            foreach(sensor s in sensorheNeed.Keys)
+            {
+                if (ListOfSensor.ContainsKey(s) && sensorheNeed[s] == ListOfSensor[s])
+                {
+                    isCorect[s] = true;
+                }
+            }
+            return isCorect;
+        } 
     }
 }

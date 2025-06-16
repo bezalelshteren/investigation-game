@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    public interface IAgent
+    public class Agent
     {
-        string Rank { get; set; }
-        int SensorSlots { get; set; }
-        sensor[] arreyOfSensors { get; set; }
-        sensor[] SensorHeNeed { get; set; }
+        public string Rank { get; set; }
+        public int SensorSlots { get; set; }
+        public sensor[] arreyOfSensors { get; set; }
+        public sensor[] SensorHeNeed { get; set; }
 
-        void CounterattackBehavior();
+        void CounterattackBehavior() { }
     }
 
 }

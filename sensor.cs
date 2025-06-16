@@ -6,17 +6,39 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    public class sensor
+    public abstract class sensor
     {
         public string name { get; set; }
         public string type { get; set; }
 
         private bool isActivate = false;
 
+        public sensor(inveestigation inveestigation)
+        {
+            ListOfSensors(inveestigation);
+        }
+
         public virtual bool activate()
         {
             this.isActivate = !isActivate;
             return isActivate;
+        }
+        public void ListOfSensors(inveestigation inveestigation)
+        {
+            Type type = this.GetType();
+            bool isContains = false;
+            foreach (sensor s in inveestigation.kindOfsensors)
+            {
+                if (s.GetType() == type)
+                {
+                    isContains = true;
+                    break;
+                }
+            }
+            if (!isContains)
+            {
+                inveestigation.kindOfsensors.Add(this);
+            }
         }
     }
     

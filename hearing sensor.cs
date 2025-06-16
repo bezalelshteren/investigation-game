@@ -10,9 +10,9 @@ namespace investigation_game
     {
 
 
-        public hearing_sensor()
+        public hearing_sensor(inveestigation inveestigation) :base(inveestigation)
         {
-                                                                                      
+            
         }
     }
 }
