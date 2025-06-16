@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    internal class hearing_sensor
+    public class hearing_sensor :sensor
     {
+
+
+        public hearing_sensor()
+        {
+                                                                                      
+        }
     }
 }

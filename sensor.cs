@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    internal class sensor
+    public class sensor
     {
+        public string name { get; set; }
+        public string type { get; set; }
+
+        private bool isActivate = false;
+
+        public virtual bool activate()
+        {
+            this.isActivate = !isActivate;
+            return isActivate;
+        }
     }
+    
 }

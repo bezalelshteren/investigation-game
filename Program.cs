@@ -10,6 +10,8 @@ namespace investigation_game
     {
         static void Main(string[] args)
         {
+            SimpleAgent simpleAgent1 = new SimpleAgent();
+            inveestigation inveestigation1 = new inveestigation();
         }
     }
 }
