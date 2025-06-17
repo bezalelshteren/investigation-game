@@ -8,6 +8,7 @@ namespace investigation_game
 {
     public abstract class sensor
     {
+        public int id { get; set; }
         public string name { get; set; }
         public string type { get; set; }
 

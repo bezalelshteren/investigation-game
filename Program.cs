@@ -10,12 +10,7 @@ namespace investigation_game
     {
         static void Main(string[] args)
         {
-           
-            SimpleAgent simpleAgent1 = new SimpleAgent();
-            inveestigation inveestigation1 = new inveestigation(simpleAgent1);
-            hearing_sensor hearing_Sensor1 = new hearing_sensor(inveestigation1);
-            audioSensor audioSensor1 = new audioSensor(inveestigation1);
-
+            mneager mneager = new mneager();
         }
     }
 }

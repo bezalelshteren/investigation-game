@@ -12,24 +12,30 @@ namespace investigation_game
         public Dictionary<sensor, int> sensorheNeed;
         public Dictionary<sensor, int> ListOfSensor;
         public Dictionary<sensor, int> theSensorsHeNeed;
-        public inveestigation(SimpleAgent simpleAgent)
+        public inveestigation(Agent agent1)
         {
             kindOfsensors = new List<sensor>();
             sensorheNeed = new Dictionary<sensor, int>();
             ListOfSensor = new Dictionary<sensor, int>();
-            createRandom(kindOfsensors, simpleAgent);
-            ListOfSensor = changfromArreyToList(simpleAgent.arreyOfSensors);
-            sensorheNeed = changfromArreyToList(simpleAgent.SensorHeNeed);
+            if (kindOfsensors.Count > 0)
+            {
+                createRandom(kindOfsensors, agent1);
+            }
+            ListOfSensor = changfromArreyToList(agent1.arreyOfSensors);
+            sensorheNeed = changfromArreyToList(agent1.SensorHeNeed);
         }
         public  Dictionary<sensor,int> changfromArreyToList(sensor[] sensors)
         {
-            foreach(sensor s in sensors)
+            foreach (sensor s in sensors)
             {
-                if (ListOfSensor.ContainsKey(s))
+                if (s != null)
                 {
-                    ListOfSensor[s] ++ ;
+                    if (ListOfSensor.ContainsKey(s))
+                    {
+                        ListOfSensor[s]++;
+                    }
+                    else { ListOfSensor[s] = 1; }
                 }
-                else { ListOfSensor[s] = 1; }
             }
             return ListOfSensor;
         }
@@ -42,8 +48,8 @@ namespace investigation_game
 
             for(int i = 0;i < SimpleAgent.SensorSlots; i++)
             {
-                int num = random.Next(kindOfsensors.Count);
-                SimpleAgent.arreyOfSensors.Append(kindOfsensors[num]);
+                int num = random.Next(0,kindOfsensors.Count);
+                SimpleAgent.arreyOfSensors[i] = kindOfsensors[num];
             }
             return SimpleAgent.arreyOfSensors;
         }

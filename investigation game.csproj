@@ -43,9 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="audioSensor.cs" />
+    <Compile Include="hearing sensor.cs" />
     <Compile Include="iagent.cs" />
+    <Compile Include="inveestigation.cs" />
+    <Compile Include="mneager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sensor.cs" />
+    <Compile Include="simpleAgent.cs" />
+    <Compile Include="thermalSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

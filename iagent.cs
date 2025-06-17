@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    public class Agent
+    public abstract class Agent
     {
         public string Rank { get; set; }
         public int SensorSlots { get; set; }
         public sensor[] arreyOfSensors { get; set; }
         public sensor[] SensorHeNeed { get; set; }
 
-        void CounterattackBehavior() { }
+        public sensor[] insertASensor(sensor samSensor, Agent agent)
+        {
+            agent.arreyOfSensors.in
+
+        public void CounterattackBehavior() { }
     }
 
 }
