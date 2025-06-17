@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace investigation_game
 {
-    internal class iagent
+    public class audioSensor:sensor
     {
+        public audioSensor(inveestigation inveestigation) : base(inveestigation)
+        {
+
+        }
+        
     }
 }
