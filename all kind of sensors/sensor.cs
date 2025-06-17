@@ -19,8 +19,9 @@ namespace investigation_game
             ListOfSensors(inveestigation);
         }
 
-        public virtual bool activate()
+        public virtual bool activate(Agent correntAgent)
         {
+
             this.isActivate = !isActivate;
             return isActivate;
         }

@@ -8,15 +8,16 @@ namespace investigation_game
 {
     public abstract class Agent
     {
+        public int id { get; set; }
         public string Rank { get; set; }
         public int SensorSlots { get; set; }
         public sensor[] arreyOfSensors { get; set; }
         public sensor[] SensorHeNeed { get; set; }
 
-        public sensor[] insertASensor(sensor samSensor, Agent agent)
+        public void insertASensor(sensor samSensor, int location)
         {
-            agent.arreyOfSensors.in
-
+            arreyOfSensors[location] = samSensor;
+        }
         public void CounterattackBehavior() { }
     }
 

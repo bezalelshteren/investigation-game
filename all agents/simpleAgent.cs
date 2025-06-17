@@ -1,6 +1,4 @@
-﻿
-
-using investigation_game;
+﻿using investigation_game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +9,6 @@ namespace investigation_game
 {
     public class SimpleAgent : Agent
     {
-    
         public SimpleAgent()
         {
            
@@ -20,6 +17,8 @@ namespace investigation_game
             arreyOfSensors = new sensor[SensorSlots] ;
             SensorHeNeed = new sensor[SensorSlots] ;
         }
+
+
     }
 }
 
