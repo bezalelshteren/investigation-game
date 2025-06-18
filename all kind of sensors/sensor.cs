@@ -14,9 +14,11 @@ namespace investigation_game
 
         private bool isActivate = false;
 
-        public sensor(inveestigation inveestigation)
+
+        public sensor(inveestigation inveestigation,string type)
         {
             ListOfSensors(inveestigation);
+            this.type = type;
         }
 
         public virtual bool activate(Agent correntAgent)

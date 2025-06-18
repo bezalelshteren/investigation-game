@@ -8,9 +8,9 @@ namespace investigation_game
 {
     public class audioSensor:sensor
     {
-        public audioSensor(inveestigation inveestigation) : base(inveestigation)
+        public audioSensor(inveestigation inveestigation) : base(inveestigation, "audioSensor")
         {
-
+            //this.type = "audioSensor";
         }
         
     }

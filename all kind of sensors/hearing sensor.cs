@@ -10,9 +10,9 @@ namespace investigation_game
     {
 
 
-        public hearing_sensor(inveestigation inveestigation) :base(inveestigation)
+        public hearing_sensor(inveestigation inveestigation) :base(inveestigation, "hearing_sensor")
         {
-            
+           // this.type = "hearing_sensor";
         }
     }
 }

@@ -9,17 +9,24 @@ namespace investigation_game
     public class inveestigation
     {
         public List<sensor> kindOfsensors;
-        public Dictionary<sensor, int> sensorheNeed;
-        public Dictionary<sensor, int> ListOfSensorHEhaed;
+        public Dictionary<string, int> sensorheNeed;
+        public Dictionary<string, int> ListOfSensorHEhaed;
         public Dictionary<sensor, int> theSensorsHeNeed;
         public inveestigation(Agent agent1)
         {
             kindOfsensors = new List<sensor>();
-            sensorheNeed = new Dictionary<sensor, int>();
-            ListOfSensorHEhaed = new Dictionary<sensor, int>();
-            if (kindOfsensors.Count > 0)
+            sensorheNeed = new Dictionary<string, int>();
+            ListOfSensorHEhaed = new Dictionary<string, int>();
+            while (kindOfsensors.Count > 0)
             {
-                createRandom(kindOfsensors, agent1);
+                if (kindOfsensors.Count > 0)
+                {
+                    createRandom(kindOfsensors, agent1);
+                }
+            }
+            foreach(sensor s in kindOfsensors)
+            {
+                Console.WriteLine(s);
             }
            
             //foreach(sensor s in ListOfSensorHEhaed)
@@ -28,17 +35,17 @@ namespace investigation_game
             //}
             
         }
-        public  Dictionary<sensor,int> changfromArreyToList(sensor[] sensors)
+        public  Dictionary<string,int> changfromArreyToList(sensor[] sensors)
         {
             foreach (sensor s in sensors)
             {
                 if (s != null)
                 {
-                    if (ListOfSensorHEhaed.ContainsKey(s))
+                    if (ListOfSensorHEhaed.ContainsKey(s.type))
                     {
-                        ListOfSensorHEhaed[s]++;
+                        ListOfSensorHEhaed[s.type]++;
                     }
-                    else { ListOfSensorHEhaed[s] = 1; }
+                    else { ListOfSensorHEhaed[s.type] = 1; }
                 }
             }
             return ListOfSensorHEhaed;
@@ -58,19 +65,21 @@ namespace investigation_game
             return SimpleAgent.arreyOfSensors;
         }
 
-        public Dictionary<sensor,bool> startAscing(Agent agent1) 
+        public bool[] startAscing(Agent agent1) 
         {
             ListOfSensorHEhaed = changfromArreyToList(agent1.arreyOfSensors);
             sensorheNeed = changfromArreyToList(agent1.SensorHeNeed);
-            Dictionary<sensor, bool> isCorect = new Dictionary<sensor, bool> ();
-            foreach(sensor s in ListOfSensorHEhaed.Keys)
+            bool[] isCorect = new bool[ListOfSensorHEhaed.Count];
+            int i = 0;
+            foreach(string s in ListOfSensorHEhaed.Keys)
             {
                 if (sensorheNeed.ContainsKey(s) && ListOfSensorHEhaed[s] == sensorheNeed[s])
                 {
-                    isCorect[s] = true;
+                    isCorect[i] = true;
                 }
+                i++;
             }
-            foreach(bool r in isCorect.Values)
+            foreach(bool r in isCorect)
             {
                 Console.WriteLine(r);
             }
